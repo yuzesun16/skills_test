@@ -8,7 +8,7 @@
 
     <nav class="navbar navbar-inverse">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ URL::to('products') }}">Nerd Alert</a>
+            <a class="navbar-brand" href="{{ URL::to('products') }}">Products Alert</a>
         </div>
         <ul class="nav navbar-nav">
             <li><a href="{{ URL::to('products') }}">View All Products</a></li>
@@ -31,6 +31,7 @@
             <td>Quantity</td>
             <td>Total Value</td>
             <td>Created DateTime</td>
+            <td>Action</td>
         </tr>
         </thead>
         <tbody>
@@ -41,6 +42,11 @@
                 <td>{{ $product->quantity }}</td>
                 <td>${{ $product->total_value }}</td>
                 <td>{{ $product->created_at }}</td>
+                <td>
+                    <a class="btn btn-small btn-info" href="{{ URL::to('products/' . $product->id . '/edit') }}">Edit</a>
+                </td>
+
+
             </tr>
         @endforeach
         </tbody>

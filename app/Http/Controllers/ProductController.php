@@ -45,4 +45,28 @@ class ProductController extends Controller
         return Redirect::to('products');
 //        return response()->json($product);
     }
+
+    public function edit($id)
+    {
+        // get the nerd
+        $product = Product::find($id);
+
+        // show the edit form and pass the nerd
+        return View::make('products.edit')
+            ->with('product', $product);
+    }
+
+    public function update($id)
+    {
+        // store
+        $product = Product::find($id);
+        $product->name       = Input::get('name');
+        $product->price      = Input::get('price');
+        $product->quantity = Input::get('quantity');
+        $product->total_value = $product->price * $product->quantity;
+        $product->save();
+
+        // redirect
+        return Redirect::to('products');
+    }
 }
