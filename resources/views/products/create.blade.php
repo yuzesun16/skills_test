@@ -52,26 +52,3 @@
 
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-<script>
-    $(document).ready(function() {
-        $(document).on('contactForm', '#reg-form', function(e) {
-            var data = $("#reg-form").serialize();
-            e.preventDefault();
-            $.ajax({
-                type: 'POST',
-                url: '{{url("/create")}}',
-                data: data,
-                success: function(data) {
-                    alert("success");
-                    console.log("Success!",data);
-
-                },
-                error: function(data) {
-                    alert("error");
-                }
-            });
-            return false;
-        });
-    });
-</script>

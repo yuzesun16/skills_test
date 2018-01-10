@@ -30,19 +30,26 @@
             <td>Price</td>
             <td>Quantity</td>
             <td>Total Value</td>
+            <td>Created DateTime</td>
         </tr>
         </thead>
         <tbody>
         @foreach($products as $product)
             <tr>
                 <td>{{ $product->name }}</td>
-                <td>{{ $product->price }}</td>
+                <td>${{ $product->price }}</td>
                 <td>{{ $product->quantity }}</td>
-                <td>{{ $product->total_value }}</td>
+                <td>${{ $product->total_value }}</td>
+                <td>{{ $product->created_at }}</td>
             </tr>
         @endforeach
         </tbody>
     </table>
+
+    <div class="panel">
+        <div class="panel-heading">JSON Format</div>
+        <div class="panel-body">{{ $products_json }}</div>
+    </div>
 
 </div>
 </body>

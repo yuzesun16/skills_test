@@ -15,8 +15,10 @@ class ProductController extends Controller
         // get all the Products
         $products = Product::all();
 
+        $products_json = Product::all()->toJson();
+
         // load the view and pass the products
-        return View::make('products.index')
+        return View::make('products.index', compact('products_json'))
             ->with('products', $products);
     }
 
@@ -36,7 +38,11 @@ class ProductController extends Controller
         $product->total_value = $product->price * $product->quantity;
         $product->save();
 
+
+
         // redirect
-        return response()->json($product);
+
+        return Redirect::to('products');
+//        return response()->json($product);
     }
 }
